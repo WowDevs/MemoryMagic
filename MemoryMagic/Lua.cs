@@ -51,12 +51,12 @@ namespace MemoryMagic
 
             var asm = new[]
             {
-                "call " + (uint) Offsets.ClntObjMgrGetActivePlayerObj,
+                "call " + ((uint) Offsets.ClntObjMgrGetActivePlayerObj + + _wowHook.Process.BaseOffset()),
                 "mov ecx, eax",
                 "push -1",
                 "mov edx, " + Lua_GetLocalizedText_Space + "",
                 "push edx",
-                "call " + (uint) Offsets.FrameScript__GetLocalizedText,
+                "call " + ((uint) Offsets.FrameScript__GetLocalizedText + _wowHook.Process.BaseOffset()),
                 "retn"
             };
 

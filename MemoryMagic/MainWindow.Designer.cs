@@ -34,6 +34,8 @@
             this.cmdDance = new System.Windows.Forms.Button();
             this.cmdShoot = new System.Windows.Forms.Button();
             this.cmdSmite = new System.Windows.Forms.Button();
+            this.cmdMyName = new System.Windows.Forms.Button();
+            this.cmdMyZone = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LogTextBox
@@ -84,11 +86,33 @@
             this.cmdSmite.UseVisualStyleBackColor = true;
             this.cmdSmite.Click += new System.EventHandler(this.cmdSmite_Click);
             // 
+            // cmdMyName
+            // 
+            this.cmdMyName.Location = new System.Drawing.Point(634, 112);
+            this.cmdMyName.Name = "cmdMyName";
+            this.cmdMyName.Size = new System.Drawing.Size(70, 25);
+            this.cmdMyName.TabIndex = 12;
+            this.cmdMyName.Text = "My Name";
+            this.cmdMyName.UseVisualStyleBackColor = true;
+            this.cmdMyName.Click += new System.EventHandler(this.cmdMyName_Click);
+            // 
+            // cmdMyZone
+            // 
+            this.cmdMyZone.Location = new System.Drawing.Point(634, 138);
+            this.cmdMyZone.Name = "cmdMyZone";
+            this.cmdMyZone.Size = new System.Drawing.Size(70, 25);
+            this.cmdMyZone.TabIndex = 13;
+            this.cmdMyZone.Text = "Zone";
+            this.cmdMyZone.UseVisualStyleBackColor = true;
+            this.cmdMyZone.Click += new System.EventHandler(this.cmdMyZone_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 437);
+            this.Controls.Add(this.cmdMyZone);
+            this.Controls.Add(this.cmdMyName);
             this.Controls.Add(this.cmdSmite);
             this.Controls.Add(this.cmdShoot);
             this.Controls.Add(this.cmdDance);
@@ -109,6 +133,8 @@
         private System.Windows.Forms.Button cmdDance;
         private System.Windows.Forms.Button cmdShoot;
         private System.Windows.Forms.Button cmdSmite;
+        private System.Windows.Forms.Button cmdMyName;
+        private System.Windows.Forms.Button cmdMyZone;
     }
 }
 

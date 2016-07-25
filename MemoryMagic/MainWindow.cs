@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -51,8 +52,6 @@ namespace MemoryMagic
 
             Log.Write("Connected to process with ID = " + proc.Id, Color.Black);
 
-            // Log.Write("Player Name: " + wowHook.Memory.ReadString(Offsets.PlayerNameOffset, Encoding.UTF8), Color.Black);
-
             CheckForIllegalCrossThreadCalls = false;
 
             var pulse = new Thread(delegate()
@@ -64,12 +63,16 @@ namespace MemoryMagic
                         cmdLogin.Enabled = false;
                         cmdDance.Enabled = true;
                         cmdShoot.Enabled = true;
+                        cmdMyName.Enabled = true;
+                        cmdMyZone.Enabled = true;
                     }
                     else
                     {
                         cmdLogin.Enabled = true;
                         cmdDance.Enabled = false;
                         cmdShoot.Enabled = false;
+                        cmdMyName.Enabled = false;
+                        cmdMyZone.Enabled = false;
                     }
                     Thread.Sleep(100);
                 }
@@ -97,6 +100,18 @@ namespace MemoryMagic
         private void cmdSmite_Click(object sender, EventArgs e)
         {
             lua.CastSpellByName("Smite");
+        }
+
+        private void cmdMyName_Click(object sender, EventArgs e)
+        {
+            Log.Write("Player Name: " + wowHook.Memory.ReadString(Offsets.PlayerNameOffset, Encoding.UTF8, 512, true), Color.Black);
+        }
+
+        private void cmdMyZone_Click(object sender, EventArgs e)
+        {
+            lua.DoString("zoneData = GetZoneText()");
+            Thread.Sleep(100);
+            Log.Write("Zone: " + lua.GetLocalizedText("zoneData"), Color.Black);
         }
     }
 }
